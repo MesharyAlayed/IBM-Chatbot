@@ -1,0 +1,258 @@
+{
+  "intents": [
+    {
+      "intent": "Directions",
+      "examples": [
+        {
+          "text": "go left"
+        },
+        {
+          "text": "go straight"
+        },
+        {
+          "text": "back up"
+        },
+        {
+          "text": "turn right please"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Thanks",
+      "examples": [
+        {
+          "text": "thanks"
+        },
+        {
+          "text": "thank u"
+        },
+        {
+          "text": "appreciate it"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greeting",
+      "examples": [
+        {
+          "text": "hey"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "how are you"
+        },
+        {
+          "text": "good morning"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "directions",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "left",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "right",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "backwards",
+          "synonyms": [
+            "backward",
+            "back",
+            "rearward"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "forward",
+          "synonyms": [
+            "forwards",
+            "ahead",
+            "foward",
+            "straight"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "stop",
+          "synonyms": [
+            "halt",
+            "pause",
+            "hold"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Greeting",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hey there!"
+              },
+              {
+                "text": "Hello."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#Greeting",
+      "dialog_node": "node_2_1595128654529",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Thanks",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "you're most welcome"
+              },
+              {
+                "text": "if there's anything else, let me know"
+              },
+              {
+                "text": "my pleasure "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Thanks",
+      "dialog_node": "node_1_1595128905704",
+      "previous_sibling": "node_10_1595128809347"
+    },
+    {
+      "type": "standard",
+      "title": "Directions",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Roger that"
+              },
+              {
+                "text": "direction has been set"
+              },
+              {
+                "text": "Done. more directions? "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Directions",
+      "dialog_node": "node_10_1595128809347",
+      "previous_sibling": "node_2_1595128654529"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1595128905704",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi there. Would you like to move the robot?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
